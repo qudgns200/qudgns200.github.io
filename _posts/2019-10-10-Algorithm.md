@@ -6,9 +6,8 @@ description:
 ---
 
 Algorithm_LeetCode_<span class="red">TwoSum</span>
-Description : https://leetcode.com/problems/two-sum/
-
-#### Code snippet
+(https://leetcode.com/problems/two-sum/)
+<br>
 
 ```java
 class Solution {
