@@ -5,12 +5,8 @@ category: Algorithm
 description: 
 ---
 
--------------------------------------------------------
-
-#### Algorithm_LeetCode_<span class="red">TwoSum</span>
+Algorithm_LeetCode_<span class="red">TwoSum</span>
 Description : https://leetcode.com/problems/two-sum/
-
--------------------------------------------------------
 
 #### Code snippet
 
