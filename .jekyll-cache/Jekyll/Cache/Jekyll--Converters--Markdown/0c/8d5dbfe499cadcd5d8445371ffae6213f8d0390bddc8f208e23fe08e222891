@@ -1,0 +1,42 @@
+I"t<p>Algorithm_LeetCode_<span class="red">Add Two Numbers</span>
+(https://leetcode.com/problems/add-two-numbers/)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">ListNode</span> <span class="nf">addTwoNumbers</span><span class="o">(</span><span class="nc">ListNode</span> <span class="n">l1</span><span class="o">,</span> <span class="nc">ListNode</span> <span class="n">l2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ListNode</span> <span class="n">l3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="nc">ListNode</span> <span class="n">head</span> <span class="o">=</span> <span class="n">l3</span><span class="o">;</span>
+
+		<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">ret</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">while</span><span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> 
+		<span class="o">{</span>
+            <span class="kt">int</span> <span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">l1</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="k">else</span> <span class="n">x</span><span class="o">=</span><span class="n">l1</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">l2</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="k">else</span> <span class="n">y</span><span class="o">=</span><span class="n">l2</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">i</span><span class="o">;</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">ret</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+            
+            <span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">ret</span><span class="o">%</span><span class="mi">10</span><span class="o">);</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            
+            <span class="k">if</span><span class="o">(</span><span class="n">l1</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">l2</span><span class="o">!=</span><span class="kc">null</span><span class="o">)</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+		<span class="o">}</span>
+		
+		<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">)</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">l3</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><br />
+무수한 실패를 반복하며 해결..<br />
+ListNode에 직접 데이터들을 때려넣었더니 되지 않아<br />
+참조로 변경 후 해결..<br /></p>
+
+<p>실패 이미지..<br />
+<img src="/assets/img/Algorithm(20191011).jpg" alt="" /></p>
+
+:ET

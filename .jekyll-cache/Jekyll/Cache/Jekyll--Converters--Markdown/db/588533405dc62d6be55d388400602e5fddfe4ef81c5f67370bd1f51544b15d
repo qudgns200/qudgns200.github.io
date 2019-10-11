@@ -1,9 +1,6 @@
-I"Œ<h4 id="algorithm_leetcode_twosum">Algorithm_LeetCode_<span class="red">TwoSum</span></h4>
-<p>Description : https://leetcode.com/problems/two-sum/</p>
-
-<hr />
-
-<h4 id="code-snippet">Code snippet</h4>
+I".<p>Algorithm_LeetCode_<span class="red">TwoSum</span>
+(https://leetcode.com/problems/two-sum/)
+<br /></p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
