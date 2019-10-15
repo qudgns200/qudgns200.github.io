@@ -1,0 +1,46 @@
+I"�<p>Algorithm_LeetCode_<span class="red">Reverse Integer</span>
+(https://leetcode.com/problems/reverse-integer/)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">reverse</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">num</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+		<span class="nc">StringBuffer</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+        <span class="kt">boolean</span> <span class="n">chk</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+		
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+			<span class="k">else</span>
+			<span class="o">{</span>
+				<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">num</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span>
+				<span class="o">{</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)!=</span><span class="sc">'-'</span><span class="o">)</span>
+					<span class="o">{</span>
+						<span class="k">if</span><span class="o">(</span><span class="n">num</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)!=</span><span class="sc">'0'</span><span class="o">)</span>
+						<span class="o">{</span>
+							<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">num</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+							<span class="n">chk</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+						<span class="o">}</span>
+						<span class="k">else</span>
+						<span class="o">{</span>
+							<span class="k">if</span><span class="o">(</span><span class="n">chk</span><span class="o">==</span><span class="kc">true</span><span class="o">)</span> <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">num</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+						<span class="o">}</span>
+					<span class="o">}</span>
+				<span class="o">}</span>
+				<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+				
+				<span class="k">if</span><span class="o">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">)</span> <span class="n">y</span> <span class="o">=</span> <span class="o">-(</span><span class="n">y</span><span class="o">);</span>
+				<span class="k">return</span> <span class="n">y</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">catch</span><span class="o">(</span><span class="nc">NumberFormatException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><br />
+쉬운 문제임에도 문제를 제대로 읽지 않아 많은 시행착오를 겪었다.<br />
+overflow에 대한 해결을 원하는 문제였을 줄이야…!!!!<br />
+<br /><br /><br /></p>
+:ET

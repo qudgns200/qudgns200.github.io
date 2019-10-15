@@ -1,0 +1,53 @@
+I"<p>Algorithm_LeetCode_<span class="red">Roman to Integer</span>
+(https://leetcode.com/problems/roman-to-integer/)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">romanToInt</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()];</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">temp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">chgRoman</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+		<span class="o">}</span>
+		
+		<span class="k">while</span><span class="o">(</span><span class="n">j</span><span class="o">&lt;=</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">sum</span> <span class="o">=</span> <span class="n">chgRoman</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+				<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">j</span><span class="o">==</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">temp</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="n">temp</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+				<span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">temp</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+				<span class="n">j</span><span class="o">++;</span>
+			<span class="o">}</span>
+			<span class="k">else</span> <span class="o">{</span>
+				<span class="n">sum</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">+</span> <span class="o">(</span><span class="n">temp</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]-</span><span class="n">temp</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+				<span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="o">+</span><span class="mi">2</span><span class="o">;</span>				
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">chgRoman</span><span class="o">(</span><span class="kt">char</span> <span class="n">roman</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">switch</span> <span class="o">(</span><span class="n">roman</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">case</span> <span class="sc">'I'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'V'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">5</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'X'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">10</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'L'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">50</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'C'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">100</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'D'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">500</span><span class="o">;</span>
+		<span class="k">case</span> <span class="sc">'M'</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">1000</span><span class="o">;</span>
+		<span class="k">default</span><span class="o">:</span>
+			<span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
