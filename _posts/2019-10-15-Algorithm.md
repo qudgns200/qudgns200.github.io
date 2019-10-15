@@ -1,0 +1,30 @@
+---
+layout: post
+title:  Algorithm(20191015)_Palindrome Number
+category: Algorithm 
+description: 
+---
+
+Algorithm_LeetCode_<span class="red">TwoSum</span>
+(https://leetcode.com/problems/palindrome-number/)
+<br>
+
+```java
+class Solution {
+    public boolean isPalindrome(int x) {
+		String s = Integer.toString(x);
+		int i=0, j=s.length()-1;
+		boolean ret = true;
+		
+		while(i<j) {
+			if(s.charAt(i) != s.charAt(j)) {
+				ret = false;
+				break;
+			}
+			i++;
+			j--;
+		}
+		return ret;
+    }
+}
+```
