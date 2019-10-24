@@ -1,0 +1,43 @@
+I"<p>Algorithm_LeetCode_<span class="red">Longest Palindromic Substring</span>
+(https://leetcode.com/problems/longest-palindromic-substring/)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">longestPalindrome</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">)</span> <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+		
+		<span class="kt">int</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">searhArray</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">);</span>
+			<span class="kt">int</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">searhArray</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">i</span><span class="o">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+			
+			<span class="kt">int</span> <span class="n">maxLen</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">len1</span><span class="o">,</span> <span class="n">len2</span><span class="o">);</span>
+			
+			<span class="k">if</span><span class="o">(</span><span class="n">maxLen</span> <span class="o">&gt;</span> <span class="o">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">+</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">maxLen</span> <span class="o">==</span> <span class="n">len1</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">start</span> <span class="o">=</span> <span class="n">i</span><span class="o">-(</span><span class="n">maxLen</span><span class="o">/</span><span class="mi">2</span><span class="o">);</span>
+				<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+					<span class="n">start</span> <span class="o">=</span> <span class="n">i</span><span class="o">-(</span><span class="n">maxLen</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+				<span class="o">}</span>
+				<span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">maxLen</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">searhArray</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		
+		<span class="k">while</span><span class="o">(</span><span class="n">l</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">l</span><span class="o">)</span> <span class="o">==</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">r</span><span class="o">))</span> <span class="o">{</span>
+			<span class="n">tmp</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+			<span class="n">l</span><span class="o">--;</span>
+			<span class="n">r</span><span class="o">++;</span>
+		<span class="o">}</span>
+		<span class="k">return</span> <span class="n">tmp</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

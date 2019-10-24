@@ -1,0 +1,49 @@
+I"ý<p>Algorithm_LeetCode_<span class="red">Merge Two Sorted Lists</span>
+(https://leetcode.com/problems/merge-two-sorted-lists/)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">ListNode</span> <span class="nf">mergeTwoLists</span><span class="o">(</span><span class="nc">ListNode</span> <span class="n">l1</span><span class="o">,</span> <span class="nc">ListNode</span> <span class="n">l2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ListNode</span> <span class="n">l3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="nc">ListNode</span> <span class="n">head</span> <span class="o">=</span> <span class="n">l3</span><span class="o">;</span>
+        <span class="kt">boolean</span> <span class="n">b1</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">l1</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">b1</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">l2</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">b2</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
+        
+        <span class="k">while</span><span class="o">(</span><span class="n">b1</span> <span class="o">!=</span> <span class="kc">false</span> <span class="o">||</span> <span class="n">b2</span> <span class="o">!=</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+     	
+        	<span class="k">if</span><span class="o">(</span><span class="n">b1</span><span class="o">==</span><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="n">b2</span><span class="o">==</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+        		<span class="k">if</span><span class="o">(</span><span class="n">l1</span><span class="o">.</span><span class="na">val</span> <span class="o">&lt;=</span> <span class="n">l2</span><span class="o">.</span><span class="na">val</span><span class="o">)</span> <span class="o">{</span>
+        			<span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">l1</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+        			<span class="k">if</span><span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        		<span class="o">}</span>
+        		<span class="k">else</span> <span class="o">{</span>
+        			<span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">l2</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+        			<span class="k">if</span><span class="o">(</span><span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">b1</span><span class="o">==</span><span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="n">b2</span><span class="o">==</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+    			<span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">l2</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+    			<span class="k">if</span><span class="o">(</span><span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        	<span class="o">}</span> <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">b1</span><span class="o">==</span><span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="n">b2</span><span class="o">==</span><span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+    			<span class="n">head</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ListNode</span><span class="o">(</span><span class="n">l1</span><span class="o">.</span><span class="na">val</span><span class="o">);</span>
+    			<span class="k">if</span><span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        	<span class="o">}</span>
+        	
+            <span class="k">if</span><span class="o">(</span><span class="n">l1</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">b1</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">l2</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="n">b2</span><span class="o">=</span><span class="kc">false</span><span class="o">;</span>
+
+        	<span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">l3</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

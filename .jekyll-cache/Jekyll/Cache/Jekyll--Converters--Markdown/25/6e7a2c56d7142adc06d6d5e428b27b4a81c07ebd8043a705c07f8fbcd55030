@@ -1,0 +1,146 @@
+I"�5<p>TIL(20191024) <span class="red">TCP/IP echo Server</span>
+<br /></p>
+
+<blockquote>
+  <ol>
+    <li>Server : Java</li>
+    <li>Client : C#</li>
+    <li>Description : It’s simple sample for using TCP/IP Network!!</li>
+  </ol>
+</blockquote>
+
+<ul>
+  <li>Server : java</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.InputStreamReader</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.OutputStreamWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.ServerSocket</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.Socket</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainServer</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">// TODO Auto-generated method stub</span>
+		<span class="nc">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="nc">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="c1">// Instance serverSocket(port :8080)</span>
+			<span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ServerSocket</span><span class="o">(</span><span class="mi">8080</span><span class="o">);</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"서버가 준비되었습니다."</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// TODO: handle exception</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+
+		<span class="nc">InputStream</span> <span class="n">is</span><span class="o">;</span>
+		<span class="nc">OutputStream</span> <span class="n">os</span><span class="o">;</span>
+
+		<span class="k">try</span> <span class="o">{</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"연결 요청을 기다립니다."</span><span class="o">);</span>
+			<span class="c1">// Allow the connect of client</span>
+			<span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">socket</span><span class="o">.</span><span class="na">getInetAddress</span><span class="o">()</span> <span class="o">+</span> <span class="s">" 로부터 연결 요청"</span><span class="o">);</span>
+			
+			<span class="c1">// Get client's stream for sending message</span>
+			<span class="n">os</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+			<span class="nc">PrintWriter</span> <span class="n">pw</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="nc">OutputStreamWriter</span><span class="o">(</span><span class="n">os</span><span class="o">),</span><span class="kc">true</span><span class="o">);</span>
+			
+			<span class="c1">// Sending a data to remote socket</span>
+			<span class="n">pw</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Success connection to server"</span><span class="o">);</span>
+			<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"데이터 전송 완료"</span><span class="o">);</span>
+			
+			<span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+				<span class="c1">// Save the message of client for return</span>
+				<span class="n">is</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+				<span class="nc">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedReader</span><span class="o">(</span><span class="k">new</span> <span class="nc">InputStreamReader</span><span class="o">(</span><span class="n">is</span><span class="o">));</span>
+				
+				<span class="nc">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">readLine</span><span class="o">();</span>
+				
+				<span class="k">if</span><span class="o">(</span><span class="n">answer</span><span class="o">==</span><span class="s">"exit"</span><span class="o">)</span> <span class="k">break</span><span class="o">;</span>
+				
+				<span class="n">pw</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"ECHO : "</span> <span class="o">+</span> <span class="n">answer</span><span class="o">);</span>
+				<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"재전송_Echo : "</span> <span class="o">+</span> <span class="n">answer</span><span class="o">);</span>
+			<span class="o">}</span>
+			<span class="n">is</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="n">os</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+			<span class="n">serverSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+		<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// TODO: handle exception</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li>Client : C#</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Net.Sockets</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Calculator</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TcpClient</span> <span class="n">client</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="n">String</span> <span class="n">rMessage</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">sMessage</span><span class="p">;</span>
+
+                <span class="c1">// Instance a TCP Connection</span>
+                <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TcpClient</span><span class="p">();</span>
+                <span class="n">client</span><span class="p">.</span><span class="nf">Connect</span><span class="p">(</span><span class="s">"localhost"</span><span class="p">,</span> <span class="m">8080</span><span class="p">);</span>
+
+                <span class="c1">// return networkStrem of client for send and receive data</span>
+                <span class="n">NetworkStream</span> <span class="n">ns</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">GetStream</span><span class="p">();</span>
+                <span class="n">StreamReader</span> <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">ns</span><span class="p">);</span>
+                <span class="n">StreamWriter</span> <span class="n">sw</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+                <span class="c1">// Receive a message from server</span>
+                <span class="n">rMessage</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">rMessage</span><span class="p">);</span>
+
+                <span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="s">"메세지 입력 : "</span><span class="p">);</span>
+                    <span class="n">sMessage</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+
+                    <span class="c1">// Send the message on a stream</span>
+                    <span class="n">sw</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">ns</span><span class="p">);</span>
+                    <span class="n">sw</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sMessage</span><span class="p">);</span> 
+                    <span class="n">sw</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="n">sMessage</span> <span class="p">==</span> <span class="s">"exit"</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+
+                    <span class="c1">// Receivce the message from server(echo)</span>
+                    <span class="n">sr</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">ns</span><span class="p">);</span>
+                    <span class="n">rMessage</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+                    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">rMessage</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="n">sr</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+                <span class="n">sw</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+                <span class="n">ns</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+                <span class="n">client</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
