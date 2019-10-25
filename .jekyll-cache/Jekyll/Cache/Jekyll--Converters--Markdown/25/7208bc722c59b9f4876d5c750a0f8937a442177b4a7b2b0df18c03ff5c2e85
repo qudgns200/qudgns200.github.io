@@ -1,4 +1,4 @@
-I"�5<p>TIL(20191024) <span class="red">TCP/IP echo Server</span>
+I"47<p>TIL(20191024) <span class="red">TCP/IP echo Server</span>
 <br /></p>
 
 <blockquote>
@@ -80,14 +80,18 @@
 </code></pre></div></div>
 
 <ul>
-  <li>C#</li>
+  <li>Client : C#</li>
 </ul>
 
-<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">usiusing</span> <span class="n">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Net.Sockets</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">Calculator</span>
+<span class="k">namespace</span> <span class="nn">TCP_IP</span>
 <span class="p">{</span>
     <span class="k">class</span> <span class="nc">Program</span>
     <span class="p">{</span>
@@ -113,14 +117,14 @@
                 <span class="n">rMessage</span> <span class="p">=</span> <span class="n">sr</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
                 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">rMessage</span><span class="p">);</span>
 
-                <span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+                <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span>
                 <span class="p">{</span>
                     <span class="n">Console</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="s">"메세지 입력 : "</span><span class="p">);</span>
                     <span class="n">sMessage</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
 
                     <span class="c1">// Send the message on a stream</span>
                     <span class="n">sw</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">ns</span><span class="p">);</span>
-                    <span class="n">sw</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sMessage</span><span class="p">);</span> 
+                    <span class="n">sw</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sMessage</span><span class="p">);</span>
                     <span class="n">sw</span><span class="p">.</span><span class="nf">Flush</span><span class="p">();</span>
 
                     <span class="k">if</span> <span class="p">(</span><span class="n">sMessage</span> <span class="p">==</span> <span class="s">"exit"</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
@@ -135,12 +139,13 @@
                 <span class="n">ns</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
                 <span class="n">client</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
             <span class="p">}</span>
-            <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+
 </code></pre></div></div>
 :ET

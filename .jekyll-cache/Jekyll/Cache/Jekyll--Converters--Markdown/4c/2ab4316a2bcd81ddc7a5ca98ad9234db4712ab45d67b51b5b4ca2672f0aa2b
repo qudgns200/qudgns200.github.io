@@ -1,0 +1,43 @@
+I"�<p>TIL(20191025) <span class="red">Simple board using JSP</span>
+<br /></p>
+
+<blockquote>
+  <ol>
+    <li>.java
+      <ul>
+        <li>user : User.java / UserDAO.java</li>
+        <li>bbs : Bbs.java / BbsDAO.java</li>
+      </ul>
+    </li>
+    <li>.jsp
+      <ul>
+        <li>user
+          <ul>
+            <li>index.jsp / main.jsp</li>
+            <li>login.jsp / loginAction.jsp / logoutAction.jsp</li>
+            <li>join.jsp / joinAction.jsp</li>
+          </ul>
+        </li>
+        <li>bbs
+          <ul>
+            <li>bbs.jsp</li>
+            <li>view.jsp</li>
+            <li>write.jsp / writeAction.jsp</li>
+            <li>update.jsp / updateAction.jsp</li>
+            <li>deleteAction.jsp</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Description<br />
+It’s Simple board using JSP.<br />
+There are 5 functions.<br />
+‘1. login / 2. join / 3. write a post / 4. update a post / 5. delete a post<br />
+After that, I will add more functions and use new skills.
+<br /></li>
+  </ol>
+</blockquote>
+
+<p>‘참고’ 
+inflern : <a href="https://www.inflearn.com/course/jsp-%EA%B2%8C%EC%8B%9C%ED%8C%90/dashboard">https://www.inflearn.com/course/jsp-%EA%B2%8C%EC%8B%9C%ED%8C%90/dashboard</a></p>
+:ET
