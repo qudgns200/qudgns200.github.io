@@ -8,28 +8,18 @@ description:
 TIL(20191025) <span class="red">Simple board using JSP</span>
 <br>
 
->1. .java
-    - user : User.java / UserDAO.java
-    - bbs : Bbs.java / BbsDAO.java
->2. .jsp
-    - user
-        * index.jsp / main.jsp
-        * login.jsp / loginAction.jsp / logoutAction.jsp
-        * join.jsp / joinAction.jsp
-    - bbs
-        * bbs.jsp
-        * view.jsp
-        * write.jsp / writeAction.jsp
-        * update.jsp / updateAction.jsp
-        * deleteAction.jsp
->3. Description<br>
-- It's Simple board using JSP.<br>
-- There are 5 functions.<br>1. login / 2. join / 3. write a post / 4. update a post / 5. delete a post<br>
-- After that, I will add more functions and use new skills.
+> 1. JSP를 활용한 간단한 게시판 만들기
+    - prestatement를 사용
+    - 대부분 JSP에서 로직 처리
+> 2. 이후 할 일
+    - Spring 사용하여 게시판 구현
+    - 로직 대부분 자바에서 처리
+    - MyBatis 사용하기
 <br>
+
+
 
 **Reference Site :** 
 [inflearn](https://www.inflearn.com/course/jsp-%EA%B2%8C%EC%8B%9C%ED%8C%90/dashboard){: .btn.btn-default target="_blank"}
 <br>
-**Source :** [GitHub](https://github.com/qudgns200/TIL/tree/master/BBS){: .btn.btn-default target="_blank"}
 
