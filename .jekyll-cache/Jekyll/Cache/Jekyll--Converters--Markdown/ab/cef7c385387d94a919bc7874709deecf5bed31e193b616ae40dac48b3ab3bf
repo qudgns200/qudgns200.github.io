@@ -1,0 +1,32 @@
+I"(<p>Algorithm_programmers_<span class="red">완주하지 못한 선수</span>
+(https://programmers.co.kr/learn/courses/30/lessons/42576)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+
+<span class="c1">// 2개의 배열을 List에 담아 순차 정렬 후</span>
+<span class="c1">// 순차적으로 비교하며 2개의 문자열이 다른 값을 리턴</span>
+<span class="c1">// 처음 이중 for문으로 제작하였다가 시간 초과로 실패</span>
+<span class="c1">// 자바 내 클래스를 활용하여 문제 해결</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">participant</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">completion</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">participant</span><span class="o">));</span>
+		<span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">completion</span><span class="o">));</span>
+		
+		<span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr1</span><span class="o">);</span>
+		<span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr2</span><span class="o">);</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr2</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(!</span><span class="n">arr1</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">arr2</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)))</span> <span class="o">{</span>
+				<span class="k">return</span> <span class="n">arr1</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">arr1</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arr1</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

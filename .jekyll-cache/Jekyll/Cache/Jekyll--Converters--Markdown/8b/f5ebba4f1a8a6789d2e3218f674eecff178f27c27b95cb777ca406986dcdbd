@@ -1,0 +1,42 @@
+I"�<p>TIL(20191029) <span class="red">Spring</span>
+<br /></p>
+
+<blockquote>
+  <ol>
+    <li>Maven
+      <ul>
+        <li>자바 프로젝트의 빌드를 자동화 해주는 툴</li>
+        <li>POM.xml(Project Object Model) : 프로젝트의 설정, 의존성 등을 확인</li>
+      </ul>
+    </li>
+    <li>Spring
+    - 자바 플랫폼을 위한 오픈소스 애플리케이션 프레임워크
+    - 특징
+      <ul>
+        <li>POJO(Plain Old Java Object)</li>
+        <li>IoC(Inversion of Control)</li>
+        <li>DI(Dependency Injection)</li>
+        <li>AOP(Aspect-Oriented Programming)</li>
+      </ul>
+    </li>
+    <li>Mybatis
+    - 개발자가 지정한 SQL, 저장프로시저, 매핑을 지원하는 프레임워크
+    - 구성 : 환경설정파일 / 매핑설정파일 / Session 빌드 및 사용</li>
+    <li>Spring MVC
+    - 주요 컴포넌트
+      <ul>
+        <li>DispatcherServlet : Front Controller</li>
+        <li>Controller : 클라이언트 요청 처리를 수행하는 Controller</li>
+        <li>HandlerMapping : 클라이언트의 요청을 처리할 Controller를 찾는 작업 처리</li>
+        <li>View : 응답하는 로직을 처리</li>
+        <li>ViewResolver : 응답할 View를 찾는 작업을 처리</li>
+        <li>ModelAndView : 응답할 View와 View에게 전달할 값을 저장하는 용도의 객체</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p>※ Ajax 공부 중….
+<br /></p>
+
+:ET

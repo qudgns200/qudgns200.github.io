@@ -1,0 +1,19 @@
+I"<p>TIL(20191030) <span class="red">Spring_board</span>
+<br /></p>
+
+<blockquote>
+  <p>Spring으로 게사판 작성 중…!!</p>
+  <ol>
+    <li>진행 중 에러<br />
+    * com.mysql.cj.exceptions.InvalidConnectionAttributeException 발생<br />
+ 해결방안 : DB url 수정<br />
+ ex) jdbc:mysql://localhost/company -&gt; jdbc:mysql://localhost/company?characterEncoding=UTF-8&amp;serverTimezone=UTC<br />
+ <br />
+    - org.apache.ibatis.binding.BindingException 발생<br />
+ 해결방안 :</li>
+  </ol>
+</blockquote>
+
+<p><br /></p>
+
+:ET

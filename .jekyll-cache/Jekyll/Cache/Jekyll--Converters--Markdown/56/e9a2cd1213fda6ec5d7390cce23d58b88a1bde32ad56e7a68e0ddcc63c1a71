@@ -1,0 +1,23 @@
+I"�<p>Algorithm_programmers_<span class="red">비밀지도</span>
+(https://programmers.co.kr/learn/courses/30/lessons/17681)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">String</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">String</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+		<span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+		
+		<span class="c1">// OR 비트연산자 수행</span>
+		<span class="c1">// 문제에 맞게 1-&gt;# / 0-&gt;공백 으로 처리</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span>
+					<span class="o">(</span><span class="s">"%"</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s">"s"</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">toBinaryString</span><span class="o">(</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">|</span> <span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span>
+							<span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span> <span class="s">"#"</span><span class="o">)</span>
+							<span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="s">"0"</span><span class="o">,</span> <span class="s">" "</span><span class="o">);</span>
+		<span class="o">}</span>
+		
+		<span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

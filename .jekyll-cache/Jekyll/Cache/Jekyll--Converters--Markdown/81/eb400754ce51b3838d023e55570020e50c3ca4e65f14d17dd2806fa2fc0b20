@@ -1,0 +1,27 @@
+I"�<p>TIL(20191025) <span class="red">Simple board using JSP</span>
+<br /></p>
+
+<blockquote>
+  <ol>
+    <li>JSP를 활용한 간단한 게시판 만들기
+      <ul>
+        <li>prestatement를 사용</li>
+        <li>대부분 JSP에서 로직 처리</li>
+      </ul>
+    </li>
+    <li>이후 할 일
+      <ul>
+        <li>Spring 사용하여 게시판 구현</li>
+        <li>로직 대부분 자바에서 처리</li>
+        <li>MyBatis 사용하기
+<br /></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p><strong>Reference Site :</strong> 
+<a href="https://www.inflearn.com/course/jsp-%EA%B2%8C%EC%8B%9C%ED%8C%90/dashboard" class="btn btn-default" target="_blank">inflearn</a>
+<br /></p>
+
+:ET

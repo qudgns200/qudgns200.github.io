@@ -1,0 +1,69 @@
+I"�2<p>Algorithm_programmers_<span class="red">다트 게임</span>
+(https://programmers.co.kr/learn/courses/30/lessons/17682)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">dartResult</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+		<span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span>
+		
+		<span class="c1">// 문자열 중 숫자 부분을 확인하여 cal(계산 함수) 함수 호출</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">dartResult</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+			<span class="k">else</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">isDigit</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)))</span> <span class="o">{</span>
+					<span class="c1">// 10은 2자리 정수 이므로 조건문 처리</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)==</span><span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">)==</span><span class="sc">'1'</span><span class="o">)</span> <span class="o">{</span>
+						<span class="k">continue</span><span class="o">;</span>
+					<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+						<span class="n">end</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+						<span class="n">cal</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="n">dartResult</span><span class="o">,</span> <span class="n">map</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>
+						<span class="n">start</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+						<span class="n">j</span><span class="o">++;</span>
+					<span class="o">}</span>	
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="n">cal</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">dartResult</span><span class="o">.</span><span class="na">length</span><span class="o">()-</span><span class="mi">1</span><span class="o">,</span> <span class="n">dartResult</span><span class="o">,</span> <span class="n">map</span><span class="o">,</span> <span class="n">j</span><span class="o">);</span>
+		
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">map</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+		
+		<span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="c1">// start : 정수 시작점</span>
+	<span class="c1">// end : 다음 다트 정수 지점 앞자리</span>
+	<span class="c1">// dartResult : 다트 문자열</span>
+	<span class="c1">// map : 3개의 다트 점수를 더하기 위한 HashMap</span>
+	<span class="c1">// idx : map index</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">cal</span><span class="o">(</span><span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">end</span><span class="o">,</span> <span class="nc">String</span> <span class="n">dartResult</span><span class="o">,</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">,</span> <span class="kt">int</span> <span class="n">idx</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">start</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">end</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="c1">// 정수가 10일 경우에 체크하여 10을 입력</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="n">start</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)==</span><span class="sc">'1'</span> <span class="o">&amp;&amp;</span> <span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">)==</span><span class="sc">'0'</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+					<span class="n">i</span><span class="o">++;</span>
+				<span class="o">}</span>
+				<span class="k">else</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="nc">Character</span><span class="o">.</span><span class="na">getNumericValue</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+			<span class="o">}</span>
+			<span class="c1">// 다트 문자열 수식 처리</span>
+			<span class="k">else</span> <span class="o">{</span>
+				<span class="k">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'S'</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span>
+				<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'D'</span><span class="o">)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">)</span> <span class="o">*</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">));</span>
+				<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'T'</span><span class="o">)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">)</span> <span class="o">*</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">)</span> <span class="o">*</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">));</span>
+				<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'*'</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+					<span class="k">if</span><span class="o">(</span><span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="mi">2</span><span class="o">);</span>
+				<span class="o">}</span>
+				<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">dartResult</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'#'</span><span class="o">)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">idx</span><span class="o">,</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">idx</span><span class="o">)</span> <span class="o">*</span> <span class="o">(-</span><span class="mi">1</span><span class="o">));</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
