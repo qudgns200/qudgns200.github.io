@@ -1,0 +1,29 @@
+---
+layout: post
+title:  Algorithm(20191101)_Programmers
+category: Algorithm 
+description: 
+---
+
+Algorithm_programmers_<span class="red">예산</span>
+(https://programmers.co.kr/learn/courses/30/lessons/12982)
+<br>
+
+```java
+import java.util.Arrays;
+
+class Solution {
+  public int solution(int[] d, int budget) {
+      int answer = 0;
+	      int sum = 0;
+	      Arrays.sort(d);
+	      
+	      for(int i=0; i<d.length; i++) {
+	    	  sum = sum + d[i];
+	    	  if(sum > budget) break;
+	    	  else answer++;
+	      }
+	      return answer;
+  }
+}
+```
