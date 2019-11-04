@@ -1,0 +1,43 @@
+I"g<p>Algorithm_programmers_<span class="red">체육복</span>
+(https://programmers.co.kr/learn/courses/30/lessons/42862)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">lost</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">reserve</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="c1">// return 할 데이터 저장</span>
+        <span class="c1">// 전체 인원 수에서 체육복을 잃어버린 학생의 수를 뺄셈하여</span>
+        <span class="c1">// 현재 체육 수업을 들을 수 있는 학생의 수로 설정</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="n">lost</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="c1">// 체육복 분실한 학생과 여분의 체육복을 갖고 있는 학생의 중복 제거를 위한 for문</span>
+        <span class="c1">// 중복 일 시 value를 -1로 변경</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">lost</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">reserve</span><span class="o">.</span><span class="na">length</span><span class="o">;</span><span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        		<span class="k">if</span><span class="o">(</span><span class="n">lost</span><span class="o">[</span><span class="n">i</span><span class="o">]==</span><span class="n">reserve</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+        			<span class="n">lost</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        			<span class="n">reserve</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        			<span class="n">answer</span><span class="o">++;</span>
+        			<span class="k">break</span><span class="o">;</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// 잃어버린 학생의 번호가 -1이 아니고</span>
+        <span class="c1">// 앞뒤로 비교하여 여분의 체육복을 가진 학생이 있을 경우</span>
+        <span class="c1">// 체육 수업이 가능한 학생의 인원수를 증가</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">lost</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">reserve</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>   		
+        		<span class="k">if</span><span class="o">(</span><span class="n">lost</span><span class="o">[</span><span class="n">i</span><span class="o">]!=-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">reserve</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">lost</span><span class="o">[</span><span class="n">i</span><span class="o">]-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">reserve</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">lost</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+        			<span class="n">reserve</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        			<span class="n">answer</span><span class="o">++;</span>
+        			<span class="k">break</span><span class="o">;</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

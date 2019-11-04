@@ -1,0 +1,64 @@
+I"G<p>Algorithm_programmers_<span class="red">실패율</span>
+(https://programmers.co.kr/learn/courses/30/lessons/42889)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span> <span class="no">N</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">stages</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+        
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        
+        <span class="c1">// 스테이지를 클리어 한 인원 수</span>
+        <span class="kt">double</span> <span class="n">count</span> <span class="o">=</span> <span class="n">stages</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;();</span>
+        
+        <span class="c1">// stages 배열을 돌며 각 stage의 인원 수를 찾고</span>
+        <span class="c1">// 이를 총인원에서 나눠주어 실패율을 계산</span>
+        <span class="c1">// 이후 총인원에서 클리어한 실패한 인원들을 빼서</span>
+        <span class="c1">// 다음 stage의 인워수로 조정</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">i</span><span class="o">!=</span><span class="no">N</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        	<span class="kt">int</span> <span class="n">fail</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span>
+        	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">stages</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+        		<span class="k">if</span><span class="o">(</span><span class="n">stages</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">==</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+        			<span class="n">fail</span><span class="o">++;</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span>
+        	<span class="c1">// 어떠한 stage의 모든 인원이 있을 경우</span>
+        	<span class="c1">// 총 인원수가 0이 되어 exception이 발생되기에</span>
+        	<span class="c1">// 조건문 추가</span>
+        	<span class="k">if</span><span class="o">(</span><span class="n">count</span><span class="o">&lt;=</span><span class="mi">0</span><span class="o">)</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span> <span class="n">i</span><span class="o">,</span> <span class="mf">0.0</span><span class="o">);</span>
+        	<span class="k">else</span> <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span> <span class="n">i</span><span class="o">,</span> <span class="n">fail</span><span class="o">/</span><span class="n">count</span><span class="o">);</span>
+
+        	<span class="n">i</span><span class="o">++;</span>
+        	<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="n">fail</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// Hashmap Value로 정렬</span>
+        <span class="c1">// List에 Hashmap key들을 담고</span>
+        <span class="c1">// comparator 함수를 익명함수로 사용하여 </span>
+        <span class="c1">// 해당 key들에 대한 value를 비교하여 return</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span>
+        <span class="n">arr</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">keySet</span><span class="o">());</span>
+        
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr</span><span class="o">,</span> <span class="o">(</span><span class="nc">Comparator</span><span class="o">)(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">)-&gt;</span> <span class="o">{</span>
+        	<span class="nc">Object</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">o1</span><span class="o">);</span>
+        	<span class="nc">Object</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">o2</span><span class="o">);</span>
+        	<span class="k">return</span> <span class="o">((</span><span class="nc">Comparable</span><span class="o">)</span> <span class="n">v2</span><span class="o">).</span><span class="na">compareTo</span><span class="o">(</span><span class="n">v1</span><span class="o">);</span>
+        <span class="o">});</span>
+        
+        <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
+        	<span class="n">answer</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

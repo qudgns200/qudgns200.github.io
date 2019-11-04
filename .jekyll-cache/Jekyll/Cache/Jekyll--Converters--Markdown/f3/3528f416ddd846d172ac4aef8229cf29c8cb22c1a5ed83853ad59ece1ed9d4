@@ -1,0 +1,26 @@
+I"[<h4 id="package-test란"><span class="red">Package TEST</span>란..?</h4>
+
+<blockquote>
+  <p>TEST 조건이 입력된 전압이나 Signal(전기 신호), 온도 등의 Stress(자극)를 가함으로써 제품의 전기적 특성, 기능적 특성 및 제품의 동작 속도 등을 구별하는 공정</p>
+</blockquote>
+
+<p>TEST 진행 중 발생되는 Data를 수집, 분석하여 제품의 특성적인 변화를 판단하고 필드 불랴에 대응하며 TEST 결과를 FeedBack 함으로써 제품의 특성 및 수율을 향상시키기 위해 진행</p>
+
+<p><br /></p>
+
+<h4 id="package-testdram-순서"><span class="red">Package TEST(DRAM)</span> 순서</h4>
+
+<h5 id="1-dc-test--burn-in">1) DC TEST &amp; Burn-in</h5>
+<ul>
+  <li>DC TEST : 설계 및 조립 공정을 거치면서 발생된 불량을 선별하는 공정</li>
+  <li>Burn-in : 극한 조건을 가한 후 테스트를 진행함으로써 불량 제품을 사전에 검사
+<span class="blue">이 과정을 통과해야 반도체 칩이 들어가는 전자기기가 오류 없이 작동할 수 있는 신뢰성 확보</span></li>
+</ul>
+
+<blockquote>
+  <p>참고1 : <a href="https://www.skcareersjournal.com/194" target="_blank">
+    https://www.skcareersjournal.com/194 </a>
+  <br />
+참고2 : <a href="https://kkhipp.tistory.com/40" target="_blank"> https://kkhipp.tistory.com/40 </a></p>
+</blockquote>
+:ET
