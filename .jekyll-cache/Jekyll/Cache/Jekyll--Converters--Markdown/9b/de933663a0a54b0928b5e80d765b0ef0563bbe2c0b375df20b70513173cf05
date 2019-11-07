@@ -1,0 +1,30 @@
+I"�<p>Algorithm_programmers_<span class="red">탑</span>
+(https://programmers.co.kr/learn/courses/30/lessons/42588)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">heights</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">heights</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+        
+        <span class="c1">// 전파를 왼쪽으로만 발사하기에</span>
+        <span class="c1">// 탑의 위치를 오른쪽으로 옮기며</span>
+        <span class="c1">// 위치보다 왼쪽에 있는 수신탑이 더 높을 경우에만</span>
+        <span class="c1">// 탑의 인덱스를 저장</span>
+        <span class="c1">// 아닐 경우 0으로 리턴</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">heights</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        	<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        	<span class="k">else</span> <span class="o">{</span>
+        		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span> <span class="n">j</span><span class="o">--)</span> <span class="o">{</span>
+        			<span class="k">if</span><span class="o">(</span><span class="n">heights</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;</span><span class="n">heights</span><span class="o">[</span><span class="n">j</span><span class="o">])</span> <span class="o">{</span>
+        				<span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+        				<span class="k">break</span><span class="o">;</span>
+        			<span class="o">}</span> <span class="k">else</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

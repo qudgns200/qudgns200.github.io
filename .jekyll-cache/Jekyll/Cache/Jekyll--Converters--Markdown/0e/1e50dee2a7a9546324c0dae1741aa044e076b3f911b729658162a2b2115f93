@@ -1,0 +1,39 @@
+I"\<p>Algorithm_programmers_<span class="red">기능 개발</span>
+(https://programmers.co.kr/learn/courses/30/lessons/42586)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">progresses</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">speeds</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">{};</span>
+        <span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// 배포 기능 개수</span>
+        <span class="kt">int</span> <span class="n">temp1</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="mi">0</span><span class="o">])/</span><span class="n">speeds</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span> <span class="c1">// 베포 남은 일 수</span>
+        <span class="kt">int</span> <span class="n">temp2</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// 이전 기능의 남은 배포 일 수와 비교 할 바로 다음 기능 배포 일 수</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;();</span> <span class="c1">// 배포 기능 수를 담을 list</span>
+        
+        <span class="c1">// Loop를 돌면서 이전 기능 배포 일 수와 비교하여</span>
+        <span class="c1">// 이전 배포 일 수가 더 길 경우 cnt를 증가시키고</span>
+        <span class="c1">// i번째 배포 일 수가 더 길 경우 list에 계산했던 cnt를 대입</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        	<span class="n">temp2</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="nc">Math</span><span class="o">.</span><span class="na">ceil</span><span class="o">((</span><span class="mi">100</span><span class="o">-</span><span class="n">progresses</span><span class="o">[</span><span class="n">i</span><span class="o">])/</span><span class="n">speeds</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        	
+        	<span class="k">if</span><span class="o">(</span><span class="n">temp1</span> <span class="o">&gt;=</span> <span class="n">temp2</span><span class="o">)</span> <span class="n">cnt</span><span class="o">++;</span>
+        	<span class="k">else</span> <span class="o">{</span>
+        		<span class="n">arr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
+        		<span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        		<span class="n">temp1</span> <span class="o">=</span> <span class="n">temp2</span><span class="o">;</span>
+        	<span class="o">}</span>
+        	
+        	<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="n">progresses</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="n">arr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cnt</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="c1">// answer를 정의하고 list의 데이터 삽입</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">arr</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET

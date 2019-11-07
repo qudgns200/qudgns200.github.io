@@ -1,0 +1,75 @@
+I"�%<p>Algorithm_programmers_<span class="red">문자열 압축</span>
+(https://programmers.co.kr/learn/courses/30/lessons/60057)
+<br /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">len</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// 자를 문자열 개수</span>
+        
+        <span class="c1">// 자른 문자열들을 담기 위한 ArrayList</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+        
+        <span class="c1">// 압축 문자열 저장 ArrayList</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">brr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+
+        <span class="c1">// 1. 문자열을 2개 단위부터 문자열 길이 반만큼의 길이까지 자르고 저장</span>
+        <span class="c1">// 2. 자른 문자열들을 비교하여 중복 개수 저장</span>
+        <span class="c1">// 3. 저장된 문자열들 길이 비교하여 가장 짧은 문자 길이 리턴</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">len</span><span class="o">!=</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+        	<span class="kt">int</span> <span class="n">compareCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        	<span class="kt">int</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="c1">// 문자열 자르기 전 시작 부분</span>
+        	<span class="kt">int</span> <span class="n">end</span><span class="o">=</span><span class="n">len</span><span class="o">;</span> <span class="c1">// 문자열 자르는 인덱스</span>
+        	<span class="kt">int</span> <span class="n">temp</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// 문자열 길이 저장 변수</span>
+        	<span class="n">arr</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        	<span class="n">brr</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        	
+        	<span class="nc">String</span> <span class="n">str</span><span class="o">=</span><span class="kc">null</span><span class="o">;</span>
+        	
+        	<span class="c1">// 문자열을 자를 문자열 길이 만큼 잘라서 ArrayList에 저장</span>
+        	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()/</span><span class="n">len</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        		<span class="n">arr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">));</span>
+        		<span class="n">start</span> <span class="o">+=</span> <span class="n">len</span><span class="o">;</span>
+        		<span class="n">end</span> <span class="o">+=</span> <span class="n">len</span><span class="o">;</span>
+        	<span class="o">}</span>
+        	
+        	<span class="c1">// 길이만큼 자르고 남은 문자열들을 ArrayList에 저장</span>
+        	<span class="k">if</span><span class="o">(</span><span class="n">start</span><span class="o">&lt;</span><span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="n">arr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()));</span>
+        	
+        	<span class="c1">// 자른 문자열들을 비교하여 개수를 구하여 ArrayList에 저장</span>
+        	<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">arr</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        		<span class="k">if</span><span class="o">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span> <span class="n">str</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        		<span class="k">else</span> <span class="o">{</span>
+        			<span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)))</span> <span class="o">{</span>
+        				<span class="n">temp</span><span class="o">++;</span>
+        			<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        				<span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">)</span> <span class="n">str</span> <span class="o">=</span> <span class="n">temp</span><span class="o">+</span><span class="n">str</span><span class="o">;</span>
+        				<span class="n">brr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+        				<span class="n">str</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        				<span class="n">temp</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+        			<span class="o">}</span>
+        		<span class="o">}</span>
+        	<span class="o">}</span>
+        	
+        	<span class="c1">// 마지막 인덱스의 문자열을 확인하여 저장</span>
+        	<span class="k">if</span><span class="o">(</span><span class="n">temp</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">)</span> <span class="n">str</span> <span class="o">=</span> <span class="n">temp</span><span class="o">+</span><span class="n">str</span><span class="o">;</span>
+        	<span class="n">brr</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+        	
+        	<span class="c1">// 저장된 문자열 길이 확인</span>
+        	<span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">string</span> <span class="o">:</span> <span class="n">brr</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">compareCnt</span> <span class="o">+=</span> <span class="n">string</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+			<span class="o">}</span>
+        	
+        	<span class="c1">// 이전 압축된 문자열의 길이와 비교하여 짧은 길이를 저장</span>
+        	<span class="k">if</span><span class="o">(</span><span class="n">compareCnt</span> <span class="o">&lt;</span> <span class="n">answer</span><span class="o">)</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">compareCnt</span><span class="o">;</span>
+
+        	<span class="n">len</span><span class="o">++;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+:ET
